@@ -1,0 +1,7 @@
+// p.721 참고
+// 프로젝트에서 import 기능이 제대로 작동하도록
+{
+  "compilerOptions": {
+    "target": "es6"
+  }
+}
