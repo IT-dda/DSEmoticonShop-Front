@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import NewPage from './pages/NewPage';
+import HotPage from './pages/HotPage';
+import StylePage from './pages/StylePage';
+import MyPage from './pages/mypage/MyPages';
+import NoticePage from './pages/NoticePage';
+import FaQPage from './pages/FaQPage';
+import NumberPage from './pages/NumberPage';
+import LoginPage from './pages/LoginPage';
+import SearchPage from './pages/SearchPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Route component={HomePage} path="/" exact />
+      <Route component={NewPage} path="/item/new" />
+      <Route component={HotPage} path="/item/hot" />
+      <Route component={StylePage} path="/item/style" />
+      <Route component={MyPage} path="/mypage" />
+      <Route component={NoticePage} path="/notices" />
+      <Route component={FaQPage} path="/faq" />
+      <Route component={NumberPage} path="/number" />
+      <Route component={LoginPage} path="/login" />
+      <Route component={SearchPage} path="/search" />
+    </>
   );
-}
+};
 
 export default App;
