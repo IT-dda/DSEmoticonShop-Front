@@ -21,6 +21,12 @@ const HotItemList = () => {
       <HotItem top="4"></HotItem>
       <HotItem top="5"></HotItem>
       <HotItem top="6"></HotItem>
+      <HotItem top="7"></HotItem>
+      <HotItem top="8"></HotItem>
+      <HotItem top="9"></HotItem>
+      <HotItem top="10"></HotItem>
+      <HotItem top="11"></HotItem>
+      <HotItem top="12"></HotItem>
     </HotItemListBlock>
   );
 };

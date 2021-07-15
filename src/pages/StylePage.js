@@ -12,14 +12,16 @@ const Wrapper = styled.div`
 
 const StylePage = () => {
   return (
-    <Wrapper>
+    <>
       <Header menu="style"></Header>
-      <Banner></Banner>
-      <StyleBox />
-      <StyleBox />
-      <StyleBox />
-      <StyleBox />
-    </Wrapper>
+      <Wrapper>
+        <Banner></Banner>
+        <StyleBox />
+        <StyleBox />
+        <StyleBox />
+        <StyleBox />
+      </Wrapper>
+    </>
   );
 };
 

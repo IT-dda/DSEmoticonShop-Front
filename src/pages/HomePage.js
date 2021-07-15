@@ -15,8 +15,8 @@ const Wrapper = styled.div`
 const HomePage = () => {
   return (
     <>
+      <Header menu="home"></Header>
       <Wrapper>
-        <Header menu='home'></Header>
         <Banner></Banner>
         <NewBox></NewBox>
         <HotBox></HotBox>
