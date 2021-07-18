@@ -13,13 +13,13 @@ const BannerMyBlock = styled.div`
   background-position: right;
 
   .my_header {
-    margin: 0 200px;
+    margin: 0 20%;
   }
 
   .my_tit {
     font-size: 28px;
     /* line-height: 41px; */
-    padding: 30px;
+    padding: 30px 0px;
     font-weight: bold;
   }
   .my_btns {
