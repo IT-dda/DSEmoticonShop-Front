@@ -28,8 +28,7 @@ const App = () => {
       <Route component={SearchPage} path="/search" />
       <Route component={ItemPage} path="/t" />{' '}
       {/* 새로 추가 : 뒤에 파라미터 필요 */}
-      <Route component={StyleGroupPage} path="/style/categories" />
-      {/* 새로 추가 : 뒤에 파라미터 필요 */}
+      <Route component={StyleGroupPage} path="/style/categories/:id" />
     </>
   );
 };

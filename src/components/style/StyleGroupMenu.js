@@ -1,34 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import palette from '../../lib/styles/palette';
+import { Link } from 'react-router-dom';
 
 const StyleMenuWrapper = styled.div`
   width: 100%;
   height: 200px;
-  background-color: #e9ffd9;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${(props) => {
+    return css`
+      background-color: ${palette.category[props.id]};
+    `;
+  }};
 `;
 
 const StyleMenuBlock = styled.div`
   width: 900px;
   height: 120px;
   .categoryBox {
-    font-size: 25px;
-    color: #7e7e7e;
     margin-bottom: 20px;
-
-    span {
-      cursor: pointer;
-    }
-    span + span {
-      padding-left: 12px;
-    }
-
-    span:hover {
-      font-weight: bold;
-      color: #99c065;
-    }
   }
 
   .groupBox {
@@ -42,8 +35,12 @@ const StyleMenuBlock = styled.div`
       cursor: pointer;
 
       &:hover {
-        background: #99c065;
         color: white;
+        ${(props) => {
+          return css`
+            background-color: ${palette.categoryHover[props.id]};
+          `;
+        }};
       }
     }
 
@@ -53,15 +50,58 @@ const StyleMenuBlock = styled.div`
   }
 `;
 
-const StyleGroupMenu = () => {
+const linkStyle = css`
+  font-size: 25px;
+  color: #7e7e7e;
+  margin-bottom: 20px;
+
+  .select {
+    font-weight: bold;
+    ${(props) => {
+      return css`
+        color: ${palette.categoryHover[props.id]};
+      `;
+    }};
+  }
+
+  & + & {
+    padding-left: 12px;
+  }
+
+  &:hover {
+    font-weight: bold;
+    ${(props) => {
+      return css`
+        color: ${palette.categoryHover[props.hoverId]};
+      `;
+    }};
+  }
+`;
+
+const StyledLink = styled(Link)`
+  ${linkStyle}
+  text-decoration:none;
+`;
+
+const StyleGroupMenu = ({ id }) => {
   return (
-    <StyleMenuWrapper>
-      <StyleMenuBlock>
+    <StyleMenuWrapper id={id}>
+      <StyleMenuBlock id={id}>
         <div className="categoryBox">
-          <span>인기 이모티콘 시리즈</span>
-          <span>재밌는</span>
-          <span>귀여운</span>
-          <span>동물</span>
+          <StyledLink to="/style/categories/1" id={id} hoverId={1}>
+            <span className={id === '1' ? 'select' : ''}>
+              인기 이모티콘 시리즈
+            </span>
+          </StyledLink>
+          <StyledLink to="/style/categories/2" id={id} hoverId={2}>
+            <span className={id === '2' ? 'select' : ''}>재밌는</span>
+          </StyledLink>
+          <StyledLink to="/style/categories/3" id={id} hoverId={3}>
+            <span className={id === '3' ? 'select' : ''}>귀여운</span>
+          </StyledLink>
+          <StyledLink to="/style/categories/4" id={id} hoverId={4}>
+            <span className={id === '4' ? 'select' : ''}>동물</span>
+          </StyledLink>
         </div>
         <div className="groupBox">
           <button>전체</button>
