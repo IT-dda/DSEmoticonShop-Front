@@ -13,7 +13,7 @@ const StyleGroupPage = ({ match }) => {
   const { id } = match.params;
   return (
     <>
-      <Header></Header>
+      <Header menu="style"></Header>
       <StyleGroupMenu id={id}></StyleGroupMenu>
       <Wrapper>
         <StyleGroupItemList></StyleGroupItemList>
