@@ -7,12 +7,15 @@ const HotItemWrapper = styled.li`
   list-style: none;
   align-items: center;
   padding: 0px;
-  height: 130px;
+  height: 120px;
   width: 450px;
+  margin-right: 30px;
 
   .itemBlock {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
     height: 130px;
     border-bottom: 1px solid #ebebeb;
   }
@@ -26,13 +29,11 @@ const HotItemWrapper = styled.li`
       font-weight: bold;
       text-decoration: underline;
     }
-    .thumbnail {
-      img:first-child {
-        display: none;
-      }
-      img:last-child {
-        display: inline;
-      }
+    img:first-child {
+      display: none;
+    }
+    img:last-child {
+      display: inline;
     }
   }
 `;
@@ -59,47 +60,36 @@ const HotNameBlock = styled.div`
   }
 
   .title {
-    font-size: 1.025rem;
-    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 0;
     color: #313131;
   }
   .author {
     font-size: 0.725rem;
-    padding-bottom: 0.3rem;
     color: #7e7e7e;
-  }
-  img {
-    height: 30px;
-    width: 30px;
-    display: none;
-  }
-  &:hover {
-    display: block;
   }
 `;
 
-const HotImageBlock = styled.ul`
+const HotImageBlock = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
   height: 150px;
 
-  li {
-    margin-top: 0;
-    list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
+  margin-top: 0;
+  list-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
 
-    img {
-      width: 100px;
-      height: 100px;
-    }
-    img:last-child {
-      display: none;
-    }
+  img {
+    width: 90px;
+    height: 90px;
+  }
+  img:last-child {
+    display: none;
   }
 `;
-const HotItem = ({ top }) => {
+const HomeHotItem = ({ top }) => {
   return (
     <HotItemWrapper>
       <HotTopBlock>
@@ -110,18 +100,15 @@ const HotItem = ({ top }) => {
           <div className="textBox">
             <span className="title">이모티콘 제목</span>
             <span className="author">작가 이름</span>
-            <img src="/image/like1.png" alt="like" />
           </div>
         </HotNameBlock>
         <HotImageBlock>
-          <li className="thumbnail">
-            <img src="/image/emoticon1.png" alt="emoticon1" />
-            <img src="/image/emoticon2.png" alt="emoticon1" />
-          </li>
+          <img src="/image/emoticon2.png" alt="emoticon1" />
+          <img src="/image/emoticon3.png" alt="emoticon1" />
         </HotImageBlock>
       </div>
     </HotItemWrapper>
   );
 };
 
-export default HotItem;
+export default HomeHotItem;

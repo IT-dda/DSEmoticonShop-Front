@@ -10,6 +10,8 @@ import FaQPage from './pages/FaQPage';
 import NumberPage from './pages/NumberPage';
 import LoginPage from './pages/LoginPage';
 import SearchPage from './pages/SearchPage';
+import ItemPage from './pages/ItemPage';
+import StyleGroupPage from './pages/StyleGroupPage';
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
       <Route component={NumberPage} path="/number" />
       <Route component={LoginPage} path="/login" />
       <Route component={SearchPage} path="/search" />
+      <Route component={ItemPage} path="/t" />{' '}
+      {/* 새로 추가 : 뒤에 파라미터 필요 */}
+      <Route component={StyleGroupPage} path="/style/categories/:id" />
     </>
   );
 };
