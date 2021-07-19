@@ -4,6 +4,7 @@ import NewBox from '../components/home/NewBox';
 import Banner from '../components/common/Banner';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
+import StyleBox from '../components/home/StyleBox';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ const HomePage = () => {
         <Banner></Banner>
         <NewBox></NewBox>
         <HotBox></HotBox>
+        <StyleBox></StyleBox>
       </Wrapper>
     </>
   );
