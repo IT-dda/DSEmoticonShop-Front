@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -88,7 +88,55 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Fullscreen = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+`;
+
+const SearchModalBlock = styled.div`
+  width: 100%;
+  height: 130px;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    width: 500px;
+    height: 45px;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 5px 10px;
+    font-size: 15px;
+  }
+
+  .searchImg {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-color: gray;
+  }
+`;
+
+const SearchSpaceBlock = styled.div`
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+`;
+
 const Header = ({ menu }) => {
+  const searchInput = useRef();
+  const [open, setOpen] = useState(false);
+
+  const onSearch = () => {
+    setOpen(true);
+  };
+
+  const onClickOutside = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <HeaderBlock>
@@ -98,7 +146,7 @@ const Header = ({ menu }) => {
             DS<b>emoticon</b> shop
           </div>
           <div className="itemBox">
-            <div className="search"></div>
+            <div className="search" onClick={onSearch}></div>
             <div className="profile"></div>
           </div>
         </HeaderTop>
@@ -121,6 +169,15 @@ const Header = ({ menu }) => {
         </HeaderMenu>
       </HeaderBlock>
       <Spacer />
+      {open && (
+        <Fullscreen>
+          <SearchModalBlock ref={searchInput}>
+            <input type="text" placeholder="이모티콘을 검색해보세요!" />
+            <div className="searchImg">search</div>
+          </SearchModalBlock>
+          <SearchSpaceBlock onClick={onClickOutside}></SearchSpaceBlock>
+        </Fullscreen>
+      )}
     </>
   );
 };
