@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const StyleItemBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 170px;
-  height: 210px;
+  width: 210px;
+  height: 250px;
   border-radius: 5px;
   padding: 20px;
   background-color: #fadfdfff;
