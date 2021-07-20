@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -24,34 +26,29 @@ const HeaderTop = styled.div`
   align-items: center;
 
   .title {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+    text-decoration: none;
     font-size: 20px;
   }
 
   .drawer {
-    width: 20px;
-    height: 20px;
-    background: #dddddd;
-    margin-left: 10px;
+    width: 23px;
+    height: 23px;
+    margin-left: 20px;
+    margin-right: 40px;
   }
 
   .itemBox {
     display: flex;
     .search {
-      width: 20px;
-      height: 20px;
-      background: #dddddd;
+      width: 23px;
+      height: 23px;
     }
     .profile {
-      width: 20px;
-      height: 20px;
+      width: 23px;
+      height: 23px;
       background: #dddddd;
-      margin-right: 10px;
-    }
-    div + div {
-      margin-left: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
   }
 `;
@@ -112,10 +109,9 @@ const SearchModalBlock = styled.div`
   }
 
   .searchImg {
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-    background-color: gray;
+    width: 30px;
+    height: 30px;
+    margin-left: 25px;
   }
 `;
 
@@ -141,12 +137,17 @@ const Header = ({ menu }) => {
     <>
       <HeaderBlock>
         <HeaderTop>
-          <div className="drawer"></div>
-          <div className="title">
-            DS<b>emoticon</b> shop
+          <AiOutlineMenu className="drawer"></AiOutlineMenu>
+          <div>
+            <Link to="/" className="title">
+              DS<b>emoticon</b> shop
+            </Link>
           </div>
           <div className="itemBox">
-            <div className="search" onClick={onSearch}></div>
+            <AiOutlineSearch
+              className="search"
+              onClick={onSearch}
+            ></AiOutlineSearch>
             <div className="profile"></div>
           </div>
         </HeaderTop>
@@ -173,7 +174,7 @@ const Header = ({ menu }) => {
         <Fullscreen>
           <SearchModalBlock ref={searchInput}>
             <input type="text" placeholder="이모티콘을 검색해보세요!" />
-            <div className="searchImg">search</div>
+            <AiOutlineSearch className="searchImg"></AiOutlineSearch>
           </SearchModalBlock>
           <SearchSpaceBlock onClick={onClickOutside}></SearchSpaceBlock>
         </Fullscreen>
