@@ -31,8 +31,8 @@ const HeaderTop = styled.div`
   }
 
   .drawer {
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     margin-left: 20px;
     margin-right: 40px;
   }
@@ -43,13 +43,19 @@ const HeaderTop = styled.div`
       width: 23px;
       height: 23px;
     }
-    .profile {
-      width: 23px;
-      height: 23px;
-      background: #dddddd;
-      margin-left: 20px;
-      margin-right: 20px;
-    }
+  }
+`;
+
+const LoginLink = styled(Link)`
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
   }
 `;
 
@@ -148,7 +154,9 @@ const Header = ({ menu }) => {
               className="search"
               onClick={onSearch}
             ></AiOutlineSearch>
-            <div className="profile"></div>
+            <LoginLink to="/login">
+              <img alt="프로필 기본이미지" src="/image/profile_default.png" />
+            </LoginLink>
           </div>
         </HeaderTop>
         <HeaderMenu>

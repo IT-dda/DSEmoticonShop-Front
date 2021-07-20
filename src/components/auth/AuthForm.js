@@ -7,8 +7,8 @@ const AuthBlock = styled.div`
   justify-content: center;
 
   .description {
-    width: 400px;
-    height: 370px;
+    width: 460px;
+    height: 430px;
     padding: 30px;
     font-size: 20px;
     line-height: 25px;
