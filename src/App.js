@@ -17,9 +17,21 @@ const App = () => {
   return (
     <>
       <Route component={HomePage} path="/" exact />
-      <Route component={NewPage} path="/item/new" />
-      <Route component={HotPage} path="/item/hot" />
-      <Route component={StylePage} path="/item/style" />
+      <Route
+        component={NewPage}
+        path="/item/new"
+        onUpdate={() => window.scrollTo(0, 0)}
+      />
+      <Route
+        component={HotPage}
+        path="/item/hot"
+        onUpdate={() => window.scrollTo(0, 0)}
+      />
+      <Route
+        component={StylePage}
+        path="/item/style"
+        onUpdate={() => window.scrollTo(0, 0)}
+      />
       <Route component={MyPage} path="/mypage" />
       <Route component={NoticePage} path="/notices" />
       <Route component={FaQPage} path="/faq" />

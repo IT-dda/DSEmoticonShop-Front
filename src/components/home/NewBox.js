@@ -1,28 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import HomeNewItemList from '../new/HomeNewItemList';
+import { Link } from 'react-router-dom';
 
 const NewItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const TitleBox = styled.div`
+const TitleLink = styled(Link)`
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 
   span {
     color: #7e7e7e;
   }
 `;
+
 const NewBox = () => {
   return (
     <>
       <NewItemWrapper>
-        <TitleBox>
+        <TitleLink to="/item/new">
           신규 이모티콘 <span>{'>'}</span>
-        </TitleBox>
+        </TitleLink>
         <HomeNewItemList></HomeNewItemList>
       </NewItemWrapper>
     </>
