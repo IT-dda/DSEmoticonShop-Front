@@ -1,8 +1,9 @@
 import React from 'react';
 import PurchasesPage from './PurchasesPage';
 import PresentsPages from './PresentsPages';
-import CouponsPage from './CouponsPage';
+import CouponsPages from './CouponsPages';
 import LikesPage from './LikesPage';
+import MyPages from './MyPages';
 
 const MyPage = ({ match }) => {
   const { mypgMenu } = match.params;
@@ -17,9 +18,11 @@ const MyPage = ({ match }) => {
     case 'presents':
       return <PresentsPages />;
     case 'coupons':
-      return <CouponsPage />;
+      return <CouponsPages />;
     case 'likes':
       return <LikesPage />;
+    default:
+      return <MyPages />;
   }
 };
 

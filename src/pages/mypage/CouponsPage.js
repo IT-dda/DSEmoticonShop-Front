@@ -1,12 +1,20 @@
 import React from 'react';
+import CpHavePage from './CpHavePage';
+import CpUsedPage from './CpUsedPage';
 
-const CouponsPage = () => {
-  return (
-    <>
-      <div>쿠폰함</div>
-      <div>보유쿠폰 | 사용한 쿠폰</div>
-    </>
-  );
+const CouponsPage = ({ match }) => {
+  const { cpMenu } = match.params;
+
+  if (!cpMenu) {
+    return <div>존재하지 않는 메뉴!</div>;
+  }
+
+  switch (cpMenu) {
+    case 'used':
+      return <CpUsedPage />;
+    default:
+      return <CpHavePage />;
+  }
 };
 
 export default CouponsPage;
