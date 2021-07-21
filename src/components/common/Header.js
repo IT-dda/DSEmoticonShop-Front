@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -42,6 +42,12 @@ const HeaderTop = styled.div`
     .search {
       width: 23px;
       height: 23px;
+
+      .searchIcon {
+        width: 23px;
+        height: 23px;
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -113,11 +119,16 @@ const SearchModalBlock = styled.div`
     padding: 5px 10px;
     font-size: 15px;
   }
+`;
+
+const SearchLink = styled(Link)`
+  width: 30px;
+  height: 30px;
+  margin-left: 25px;
 
   .searchImg {
     width: 30px;
     height: 30px;
-    margin-left: 25px;
   }
 `;
 
@@ -127,16 +138,19 @@ const SearchSpaceBlock = styled.div`
   height: 100%;
 `;
 
-const Header = ({ menu }) => {
+const Header = ({ menu, hideSearch }) => {
   const searchInput = useRef();
   const [open, setOpen] = useState(false);
+  const [hideIcon, setHideIcon] = useState(hideSearch);
 
   const onSearch = () => {
     setOpen(true);
+    setHideIcon(true);
   };
 
   const onClickOutside = () => {
     setOpen(false);
+    setHideIcon(false);
   };
 
   return (
@@ -150,10 +164,14 @@ const Header = ({ menu }) => {
             </Link>
           </div>
           <div className="itemBox">
-            <AiOutlineSearch
-              className="search"
-              onClick={onSearch}
-            ></AiOutlineSearch>
+            <div className="search">
+              {!hideIcon && (
+                <AiOutlineSearch
+                  className="searchIcon"
+                  onClick={onSearch}
+                ></AiOutlineSearch>
+              )}
+            </div>
             <LoginLink to="/login">
               <img alt="프로필 기본이미지" src="/image/profile_default.png" />
             </LoginLink>
@@ -182,7 +200,9 @@ const Header = ({ menu }) => {
         <Fullscreen>
           <SearchModalBlock ref={searchInput}>
             <input type="text" placeholder="이모티콘을 검색해보세요!" />
-            <AiOutlineSearch className="searchImg"></AiOutlineSearch>
+            <SearchLink to="/search">
+              <AiOutlineSearch className="searchImg"></AiOutlineSearch>
+            </SearchLink>
           </SearchModalBlock>
           <SearchSpaceBlock onClick={onClickOutside}></SearchSpaceBlock>
         </Fullscreen>
