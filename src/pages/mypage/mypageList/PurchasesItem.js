@@ -114,7 +114,7 @@ const PurchasesItem = () => {
         <div className="area_itememoticon">
           <img
             className="img_emot"
-            src="/image/emoticon.png"
+            src="/image/my_emot1.png"
             alt="이모티콘 이미지"
           />
         </div>
