@@ -1,6 +1,6 @@
 import React from 'react';
 import PurchasesPage from './PurchasesPage';
-import PresentsPage from './PresentsPage';
+import PresentsPages from './PresentsPages';
 import CouponsPage from './CouponsPage';
 import LikesPage from './LikesPage';
 
@@ -15,7 +15,7 @@ const MyPage = ({ match }) => {
     case 'purchases':
       return <PurchasesPage />;
     case 'presents':
-      return <PresentsPage />;
+      return <PresentsPages />;
     case 'coupons':
       return <CouponsPage />;
     case 'likes':

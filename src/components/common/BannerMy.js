@@ -71,8 +71,8 @@ const BannerMy = ({ location: pathname }) => {
             <Item current={pathname === '/mypage/purchases'}>
               <ButtonMy to="/mypage/purchases">구매내역</ButtonMy>
             </Item>
-            <Item current={pathname === '/mypage/presents'}>
-              <ButtonMy to="/mypage/presents">선물함</ButtonMy>
+            <Item current={pathname === '/mypage/presents/received'}>
+              <ButtonMy to="/mypage/presents/received">선물함</ButtonMy>
             </Item>
             <Item current={pathname === '/mypage/coupons'}>
               <ButtonMy to="/mypage/coupons">쿠폰함</ButtonMy>
