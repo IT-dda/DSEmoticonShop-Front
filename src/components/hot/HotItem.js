@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
-const HotItemWrapper = styled.li`
+const HotItemLink = styled(Link)`
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -18,7 +20,7 @@ const HotItemWrapper = styled.li`
   }
 
   &:hover {
-    img {
+    .like {
       display: block;
     }
     .title {
@@ -68,10 +70,14 @@ const HotNameBlock = styled.div`
     padding-bottom: 0.3rem;
     color: #7e7e7e;
   }
-  img {
-    height: 30px;
-    width: 30px;
+  .like {
     display: none;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: 20px;
   }
   &:hover {
     display: block;
@@ -101,7 +107,7 @@ const HotImageBlock = styled.ul`
 `;
 const HotItem = ({ top }) => {
   return (
-    <HotItemWrapper>
+    <HotItemLink to="/t/emoticon_name">
       <HotTopBlock>
         <span className={top < 4 ? 'redPoint' : ''}>{top}</span>
       </HotTopBlock>
@@ -110,7 +116,7 @@ const HotItem = ({ top }) => {
           <div className="textBox">
             <span className="title">이모티콘 제목</span>
             <span className="author">작가 이름</span>
-            <img src="/image/like1.png" alt="like" />
+            <AiOutlineHeart className="like"></AiOutlineHeart>
           </div>
         </HotNameBlock>
         <HotImageBlock>
@@ -120,7 +126,7 @@ const HotItem = ({ top }) => {
           </li>
         </HotImageBlock>
       </div>
-    </HotItemWrapper>
+    </HotItemLink>
   );
 };
 

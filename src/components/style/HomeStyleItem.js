@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyleItemWrapper = styled.li`
   display: flex;
@@ -40,6 +41,11 @@ const StyleImageBlock = styled.div`
   justify-content: space-between;
   width: 730px;
   margin-left: 20px;
+`;
+
+const StyleItemLink = styled(Link)`
+  width: 130px;
+  height: 130px;
   img {
     width: 130px;
     height: 130px;
@@ -56,11 +62,21 @@ const HomeStyleItem = ({ category, group }) => {
         </span>
       </StyleNameBlock>
       <StyleImageBlock>
-        <img src="/image/emoticon1.png" alt="emoticon1" />
-        <img src="/image/emoticon2.png" alt="emoticon1" />
-        <img src="/image/emoticon3.png" alt="emoticon1" />
-        <img src="/image/emoticon4.png" alt="emoticon1" />
-        <img src="/image/emoticon5.png" alt="emoticon1" />
+        <StyleItemLink to="/t/emoticon_name">
+          <img src="/image/emoticon1.png" alt="emoticon1" />
+        </StyleItemLink>
+        <StyleItemLink to="/t/emoticon_name">
+          <img src="/image/emoticon2.png" alt="emoticon1" />
+        </StyleItemLink>
+        <StyleItemLink to="/t/emoticon_name">
+          <img src="/image/emoticon3.png" alt="emoticon1" />
+        </StyleItemLink>
+        <StyleItemLink to="/t/emoticon_name">
+          <img src="/image/emoticon4.png" alt="emoticon1" />
+        </StyleItemLink>
+        <StyleItemLink to="/t/emoticon_name">
+          <img src="/image/emoticon5.png" alt="emoticon1" />
+        </StyleItemLink>
       </StyleImageBlock>
     </StyleItemWrapper>
   );

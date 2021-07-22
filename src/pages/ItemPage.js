@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ItemTop from '../components/item/ItemTop';
 import ItemBody from '../components/item/ItemBody';
 import ItemBottom from '../components/item/ItemBottom';
+import Header from '../components/common/Header';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,13 +11,18 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ItemPage = () => {
+const ItemPage = ({ match }) => {
+  const { emoticon_name } = match.params;
+
   return (
-    <Wrapper>
-      <ItemTop />
-      <ItemBody />
-      <ItemBottom />
-    </Wrapper>
+    <>
+      <Header />
+      <Wrapper>
+        <ItemTop name={emoticon_name} />
+        <ItemBody />
+        <ItemBottom />
+      </Wrapper>
+    </>
   );
 };
 

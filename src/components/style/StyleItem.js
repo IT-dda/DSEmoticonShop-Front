@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import palette from '../../lib/styles/palette';
 
 const StyleItemBlock = styled.div`
   display: flex;
@@ -8,8 +9,12 @@ const StyleItemBlock = styled.div`
   height: 250px;
   border-radius: 5px;
   padding: 20px;
-  background-color: #fadfdfff;
   cursor: pointer;
+  ${(props) => {
+    return css`
+      background-color: ${palette.category[props.id]};
+    `;
+  }};
 
   .title {
     margin-bottom: 20px;
@@ -20,7 +25,11 @@ const StyleItemBlock = styled.div`
     color: white;
     border-radius: 20px;
     padding: 7px 12px;
-    background-color: #ff8989;
+    ${(props) => {
+      return css`
+        background-color: ${palette.categoryHover[props.id]};
+      `;
+    }};
   }
 
   .thumbnail {
@@ -48,9 +57,9 @@ const StyleItemBlock = styled.div`
   }
 `;
 
-const StyleItem = ({ title }) => {
+const StyleItem = ({ title, id }) => {
   return (
-    <StyleItemBlock>
+    <StyleItemBlock id={id}>
       <div className="title">
         <span>{title}</span>
       </div>

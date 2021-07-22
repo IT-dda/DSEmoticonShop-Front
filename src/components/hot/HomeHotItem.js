@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const HotItemWrapper = styled.li`
+const HotItemLink = styled(Link)`
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -89,16 +90,16 @@ const HotImageBlock = styled.div`
     display: none;
   }
 `;
-const HomeHotItem = ({ top }) => {
+const HomeHotItem = ({ top, name }) => {
   return (
-    <HotItemWrapper>
+    <HotItemLink to="/t/emoticon_name">
       <HotTopBlock>
         <span className={top < 4 ? 'redPoint' : ''}>{top}</span>
       </HotTopBlock>
       <div className="itemBlock">
         <HotNameBlock>
           <div className="textBox">
-            <span className="title">이모티콘 제목</span>
+            <span className="title">{name}</span>
             <span className="author">작가 이름</span>
           </div>
         </HotNameBlock>
@@ -107,7 +108,7 @@ const HomeHotItem = ({ top }) => {
           <img src="/image/emoticon3.png" alt="emoticon1" />
         </HotImageBlock>
       </div>
-    </HotItemWrapper>
+    </HotItemLink>
   );
 };
 

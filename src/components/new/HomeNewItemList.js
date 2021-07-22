@@ -20,16 +20,16 @@ const NewItemListBlock = styled.ul`
 const HomeNewItemList = () => {
   return (
     <NewItemListBlock>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
-      <HomeNewItem></HomeNewItem>
+      <HomeNewItem name={'emoticon_name1'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name2'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name3'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name4'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name5'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name6'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name7'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name8'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name9'}></HomeNewItem>
+      <HomeNewItem name={'emoticon_name10'}></HomeNewItem>
     </NewItemListBlock>
   );
 };

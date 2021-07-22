@@ -16,10 +16,10 @@ const StylePage = () => {
       <Header menu="style"></Header>
       <Wrapper>
         <Banner></Banner>
-        <StyleBox />
-        <StyleBox />
-        <StyleBox />
-        <StyleBox />
+        <StyleBox name={'인기 이모티콘 시리즈'} id={1} />
+        <StyleBox name={'재밌는'} id={2} />
+        <StyleBox name={'귀여운'} id={3} />
+        <StyleBox name={'동물'} id={4} />
       </Wrapper>
     </>
   );

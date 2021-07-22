@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const NewItemWrapper = styled.li`
+const NewItemLink = styled(Link)`
   list-style: none;
   padding: 0px;
   display: flex;
@@ -66,18 +67,18 @@ const ItemImageBlock = styled.div`
   }
 `;
 
-const HomeNewItem = () => {
+const HomeNewItem = ({ name }) => {
   return (
     <>
-      <NewItemWrapper>
+      <NewItemLink to="/t/emoticon_name">
         <ItemImageBlock>
           <img src="/image/emoticon1.png" alt="emoticon" />
           <img src="/image/emoticon5.png" alt="emoticon" />
         </ItemImageBlock>
         <ItemNameBlock>
-          <span>이모티콘 제목</span>
+          <span>{name}</span>
         </ItemNameBlock>
-      </NewItemWrapper>
+      </NewItemLink>
     </>
   );
 };
