@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuPresnet from '../../components/common/MenuPresent';
+import SentItem from './mypageList/SentItem';
 
 const SentPageBlock = styled.div`
   margin: 0 20%;
+
+  ul li {
+    display: inline-block;
+  }
 `;
 
 const SentPage = () => {
@@ -11,7 +16,20 @@ const SentPage = () => {
     <SentPageBlock>
       <MenuPresnet />
       <hr />
-      보낸 선물함 ~!~!~!~
+      <ul>
+        <li>
+          <SentItem />
+        </li>
+        <li>
+          <SentItem />
+        </li>
+        <li>
+          <SentItem />
+        </li>
+        <li>
+          <SentItem />
+        </li>
+      </ul>{' '}
     </SentPageBlock>
   );
 };
