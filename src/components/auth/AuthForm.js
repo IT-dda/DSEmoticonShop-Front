@@ -13,6 +13,14 @@ const AuthBlock = styled.div`
     font-size: 20px;
     line-height: 25px;
 
+     {
+      /* 드래그 방지 */
+    }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     b {
       font-size: 35px;
     }
@@ -50,6 +58,11 @@ const LoginBlock = styled.div`
       font-size: 27px;
       font-weight: bold;
       margin-bottom: 50px;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     button {
@@ -65,6 +78,10 @@ const LoginBlock = styled.div`
     }
     .google {
       background: #2a9fff;
+      color: white;
+    }
+    .naver {
+      background: #4bb836;
       color: white;
     }
 
@@ -96,9 +113,11 @@ const AuthForm = () => {
           <span>DS</span>
           <button className="kakao">kakao 계정으로 로그인</button>
           <button className="google">google 계정으로 로그인</button>
+          <button className="naver">naver 계정으로 로그인</button>
           <hr />
           <button className="kakao">kakao 계정으로 회원가입</button>
           <button className="google">google 계정으로 회원가입</button>
+          <button className="naver">naver 계정으로 회원가입</button>
         </div>
       </LoginBlock>
     </AuthBlock>
