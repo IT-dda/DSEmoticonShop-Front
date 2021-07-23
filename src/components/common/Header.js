@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import DrawerMenu from '../mypage/DrawerMenu';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -125,10 +126,19 @@ const SearchSpaceBlock = styled.div`
   height: 100%;
 `;
 
+const DrawerMenuSpace = styled.div`
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+`;
+
 const Header = ({ menu }) => {
   const searchInput = useRef();
-  const [open, setOpen] = useState(false);
 
+  const [open, setOpen] = useState(false); // search
+  const [openMenu, setOpenMenu] = useState(false); // drawer menu
+
+  // search
   const onSearch = () => {
     setOpen(true);
   };
@@ -137,11 +147,20 @@ const Header = ({ menu }) => {
     setOpen(false);
   };
 
+  // drawer menu
+  const onMenu = () => {
+    setOpenMenu(true);
+  };
+
+  const onClickOutsideMenu = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <>
       <HeaderBlock>
         <HeaderTop>
-          <div className="drawer"></div>
+          <div className="drawer" onClick={onMenu}></div>
           <div className="title">
             DS<b>emoticon</b> shop
           </div>
@@ -168,6 +187,12 @@ const Header = ({ menu }) => {
           </StyledLink>
         </HeaderMenu>
       </HeaderBlock>
+      {openMenu && (
+        <Fullscreen>
+          <DrawerMenu />
+          <DrawerMenuSpace onClick={onClickOutsideMenu} />
+        </Fullscreen>
+      )}
       <Spacer />
       {open && (
         <Fullscreen>

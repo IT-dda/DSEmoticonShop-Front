@@ -100,6 +100,8 @@ const WrapCopyright = styled.div`
 `;
 
 const DrawerMenu = () => {
+  // if (!visible) return null;
+
   return (
     <DrawerMenuBlock>
       <WrapProfile to="/login">
