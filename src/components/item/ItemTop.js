@@ -89,7 +89,7 @@ const ItemDescription = styled.div`
   }
 `;
 
-const ItemTop = ({ name }) => {
+const ItemTop = ({ name, onLoginOpen }) => {
   return (
     <ItemTitleBox>
       <img className="representImg" src="/image/emoticon1.png" alt="emoticon" />
@@ -109,7 +109,9 @@ const ItemTop = ({ name }) => {
           </div>
         </div>
         <div className="buttonBox">
-          <button className="purchase">구매하기</button>
+          <button className="purchase" onClick={onLoginOpen}>
+            구매하기
+          </button>
           <button className="present">선물하기</button>
         </div>
       </ItemDescription>
