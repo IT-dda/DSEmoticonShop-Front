@@ -14,7 +14,7 @@ const NoticePage = () => {
   return (
     <NoticePageBlock>
       <Header />
-      <Contents title={'새소식'} />
+      <Contents title="새소식" />
     </NoticePageBlock>
   );
 };
