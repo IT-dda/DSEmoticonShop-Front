@@ -15,16 +15,16 @@ const HotItemListBlock = styled.ul`
 const HomeHotItemList = () => {
   return (
     <HotItemListBlock>
-      <HomeHotItem top="1"></HomeHotItem>
-      <HomeHotItem top="2"></HomeHotItem>
-      <HomeHotItem top="3"></HomeHotItem>
-      <HomeHotItem top="4"></HomeHotItem>
-      <HomeHotItem top="5"></HomeHotItem>
-      <HomeHotItem top="6"></HomeHotItem>
-      <HomeHotItem top="7"></HomeHotItem>
-      <HomeHotItem top="8"></HomeHotItem>
-      <HomeHotItem top="9"></HomeHotItem>
-      <HomeHotItem top="10"></HomeHotItem>
+      <HomeHotItem top="1" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="2" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="3" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="4" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="5" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="6" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="7" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="8" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="9" name="이모티콘 이름"></HomeHotItem>
+      <HomeHotItem top="10" name="이모티콘 이름"></HomeHotItem>
     </HotItemListBlock>
   );
 };

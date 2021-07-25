@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AiOutlineShareAlt } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 const ItemTitleBox = styled.div`
   width: 800px;
@@ -57,11 +59,15 @@ const ItemDescription = styled.div`
   .imageBox {
     display: flex;
 
-    img {
+    .share,
+    .like {
       width: 40px;
       height: 40px;
-      margin-left: 5px;
+      margin-left: 10px;
+      padding: 7px;
       cursor: pointer;
+      border: 1px solid #ebebeb;
+      border-radius: 20px;
     }
   }
 
@@ -83,13 +89,13 @@ const ItemDescription = styled.div`
   }
 `;
 
-const ItemTop = () => {
+const ItemTop = ({ name, onBuyOpen, onPresentOpen }) => {
   return (
     <ItemTitleBox>
       <img className="representImg" src="/image/emoticon1.png" alt="emoticon" />
       <ItemDescription>
         <div className="description">
-          <span className="title">이모티콘 제목</span>
+          <span className="title">{name}</span>
           <span className="author">작가</span>
         </div>
         <div className="priceBox">
@@ -98,13 +104,17 @@ const ItemTop = () => {
             <span className="priceSpan">2,500원</span>
           </div>
           <div className="imageBox">
-            <img src="/image/like1.png" alt="img1" />
-            <img src="/image/like1.png" alt="img2" />
+            <AiOutlineShareAlt className="share"></AiOutlineShareAlt>
+            <AiOutlineHeart className="like"></AiOutlineHeart>
           </div>
         </div>
         <div className="buttonBox">
-          <button className="purchase">구매하기</button>
-          <button className="present">선물하기</button>
+          <button className="purchase" onClick={onBuyOpen}>
+            구매하기
+          </button>
+          <button className="present" onClick={onPresentOpen}>
+            선물하기
+          </button>
         </div>
       </ItemDescription>
     </ItemTitleBox>

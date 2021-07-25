@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
-const NewItemWrapper = styled.li`
+const NewItemLink = styled(Link)`
   list-style: none;
   padding: 0px;
   display: flex;
@@ -11,7 +13,7 @@ const NewItemWrapper = styled.li`
   border-bottom: 1px solid #ebebeb;
 
   &:hover {
-    img {
+    .like {
       display: block;
     }
     .title {
@@ -50,10 +52,14 @@ const ItemNameBlock = styled.div`
     padding-bottom: 0.3rem;
     color: #7e7e7e;
   }
-  img {
-    height: 30px;
-    width: 30px;
+  .like {
     display: none;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: 20px;
   }
   &:hover {
     display: block;
@@ -85,12 +91,12 @@ const ItemImageBlock = styled.ul`
 const NewItem = () => {
   return (
     <>
-      <NewItemWrapper>
+      <NewItemLink to="/t/emoticon_name">
         <ItemNameBlock>
           <div className="textBox">
             <span className="title">이모티콘 제목</span>
             <span className="author">작가 이름</span>
-            <img src="/image/like1.png" alt="like" />
+            <AiOutlineHeart className="like"></AiOutlineHeart>
           </div>
         </ItemNameBlock>
         <ItemImageBlock>
@@ -111,7 +117,7 @@ const NewItem = () => {
             <img src="/image/emoticon8.png" alt="emoticon1" />
           </li>
         </ItemImageBlock>
-      </NewItemWrapper>
+      </NewItemLink>
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
 import DrawerMenu from '../mypage/DrawerMenu';
 
 const HeaderBlock = styled.div`
@@ -25,35 +27,42 @@ const HeaderTop = styled.div`
   align-items: center;
 
   .title {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+    text-decoration: none;
     font-size: 20px;
   }
 
   .drawer {
-    width: 20px;
-    height: 20px;
-    background: #dddddd;
-    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    margin-right: 40px;
   }
 
   .itemBox {
     display: flex;
     .search {
-      width: 20px;
-      height: 20px;
-      background: #dddddd;
+      width: 23px;
+      height: 23px;
+
+      .searchIcon {
+        width: 23px;
+        height: 23px;
+        cursor: pointer;
+      }
     }
-    .profile {
-      width: 20px;
-      height: 20px;
-      background: #dddddd;
-      margin-right: 10px;
-    }
-    div + div {
-      margin-left: 10px;
-    }
+  }
+`;
+
+const LoginLink = styled(Link)`
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
   }
 `;
 
@@ -111,12 +120,16 @@ const SearchModalBlock = styled.div`
     padding: 5px 10px;
     font-size: 15px;
   }
+`;
+
+const SearchLink = styled(Link)`
+  width: 30px;
+  height: 30px;
+  margin-left: 25px;
 
   .searchImg {
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-    background-color: gray;
+    width: 30px;
+    height: 30px;
   }
 `;
 
@@ -132,19 +145,21 @@ const DrawerMenuSpace = styled.div`
   height: 100%;
 `;
 
-const Header = ({ menu }) => {
+const Header = ({ menu, hideSearch }) => {
   const searchInput = useRef();
-
   const [open, setOpen] = useState(false); // search
+  const [hideIcon, setHideIcon] = useState(hideSearch);
   const [openMenu, setOpenMenu] = useState(false); // drawer menu
 
   // search
   const onSearch = () => {
     setOpen(true);
+    setHideIcon(true);
   };
 
   const onClickOutside = () => {
     setOpen(false);
+    setHideIcon(false);
   };
 
   // drawer menu
@@ -160,13 +175,24 @@ const Header = ({ menu }) => {
     <>
       <HeaderBlock>
         <HeaderTop>
-          <div className="drawer" onClick={onMenu}></div>
-          <div className="title">
-            DS<b>emoticon</b> shop
+          <AiOutlineMenu className="drawer" onClick={onMenu}></AiOutlineMenu>
+          <div>
+            <Link to="/" className="title">
+              DS<b>emoticon</b> shop
+            </Link>
           </div>
           <div className="itemBox">
-            <div className="search" onClick={onSearch}></div>
-            <div className="profile"></div>
+            <div className="search">
+              {!hideIcon && (
+                <AiOutlineSearch
+                  className="searchIcon"
+                  onClick={onSearch}
+                ></AiOutlineSearch>
+              )}
+            </div>
+            <LoginLink to="/login">
+              <img alt="프로필 기본이미지" src="/image/profile_default.png" />
+            </LoginLink>
           </div>
         </HeaderTop>
         <HeaderMenu>
@@ -198,7 +224,9 @@ const Header = ({ menu }) => {
         <Fullscreen>
           <SearchModalBlock ref={searchInput}>
             <input type="text" placeholder="이모티콘을 검색해보세요!" />
-            <div className="searchImg">search</div>
+            <SearchLink to="/search">
+              <AiOutlineSearch className="searchImg"></AiOutlineSearch>
+            </SearchLink>
           </SearchModalBlock>
           <SearchSpaceBlock onClick={onClickOutside}></SearchSpaceBlock>
         </Fullscreen>
