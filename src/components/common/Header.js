@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { AiOutlineMenu } from 'react-icons/ai';
+import DrawerMenu from '../mypage/DrawerMenu';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -138,11 +139,19 @@ const SearchSpaceBlock = styled.div`
   height: 100%;
 `;
 
+const DrawerMenuSpace = styled.div`
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+`;
+
 const Header = ({ menu, hideSearch }) => {
   const searchInput = useRef();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // search
   const [hideIcon, setHideIcon] = useState(hideSearch);
+  const [openMenu, setOpenMenu] = useState(false); // drawer menu
 
+  // search
   const onSearch = () => {
     setOpen(true);
     setHideIcon(true);
@@ -153,11 +162,20 @@ const Header = ({ menu, hideSearch }) => {
     setHideIcon(false);
   };
 
+  // drawer menu
+  const onMenu = () => {
+    setOpenMenu(true);
+  };
+
+  const onClickOutsideMenu = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <>
       <HeaderBlock>
         <HeaderTop>
-          <AiOutlineMenu className="drawer"></AiOutlineMenu>
+          <AiOutlineMenu className="drawer" onClick={onMenu}></AiOutlineMenu>
           <div>
             <Link to="/" className="title">
               DS<b>emoticon</b> shop
@@ -195,6 +213,12 @@ const Header = ({ menu, hideSearch }) => {
           </StyledLink>
         </HeaderMenu>
       </HeaderBlock>
+      {openMenu && (
+        <Fullscreen>
+          <DrawerMenu />
+          <DrawerMenuSpace onClick={onClickOutsideMenu} />
+        </Fullscreen>
+      )}
       <Spacer />
       {open && (
         <Fullscreen>
