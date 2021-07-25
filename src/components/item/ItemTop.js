@@ -89,7 +89,7 @@ const ItemDescription = styled.div`
   }
 `;
 
-const ItemTop = ({ name, onLoginOpen }) => {
+const ItemTop = ({ name, onBuyOpen, onPresentOpen }) => {
   return (
     <ItemTitleBox>
       <img className="representImg" src="/image/emoticon1.png" alt="emoticon" />
@@ -109,10 +109,12 @@ const ItemTop = ({ name, onLoginOpen }) => {
           </div>
         </div>
         <div className="buttonBox">
-          <button className="purchase" onClick={onLoginOpen}>
+          <button className="purchase" onClick={onBuyOpen}>
             구매하기
           </button>
-          <button className="present">선물하기</button>
+          <button className="present" onClick={onPresentOpen}>
+            선물하기
+          </button>
         </div>
       </ItemDescription>
     </ItemTitleBox>

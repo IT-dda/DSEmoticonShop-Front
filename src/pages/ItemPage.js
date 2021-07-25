@@ -4,7 +4,8 @@ import ItemTop from '../components/item/ItemTop';
 import ItemBody from '../components/item/ItemBody';
 import ItemBottom from '../components/item/ItemBottom';
 import Header from '../components/common/Header';
-import { AiOutlineClose } from 'react-icons/ai';
+import BuyModal from '../components/item/BuyModal';
+import LoginModal from '../components/item/LoginModal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,93 +25,58 @@ const FullScreen = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const LoginModalBlock = styled.div`
-  width: 350px;
-  height: 150px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .closeBlock {
-    display: flex;
-    justify-content: flex-end;
-    .closeIcon {
-      width: 20px;
-      height: 20px;
-      color: #7e7e7e;
-      cursor: pointer;
-    }
-  }
-
-  .loginText {
-    font-size: 15px;
-    margin-top: 5px;
-  }
-
-  .buttonBox {
-    display: flex;
-    justify-content: space-between;
-    button {
-      width: 152px;
-      height: 38px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .loginBtn {
-      background: #ffdf27;
-    }
-    .loginBtn:hover {
-      background: #f1d221;
-    }
-    .closeBtn {
-      background: #ebebeb;
-    }
-    .closeBtn:hover {
-      background: #dfdfdf;
-    }
-  }
-`;
 
 const ItemPage = ({ match }) => {
   const { emoticon_name } = match.params;
   const [loginOpen, setLoginOpen] = useState(false);
+  const [buyOpen, setBuyOpen] = useState(false);
+  const [presentOpen, setPresentOpen] = useState(false);
 
   const onClickClose = () => {
     setLoginOpen(false);
   };
 
-  const onLoginOpen = () => {
+  const onBuyOpen = () => {
     setLoginOpen(true);
+    setBuyOpen(true);
+  };
+
+  const onPresentOpen = () => {
+    setLoginOpen(true);
+    setPresentOpen(true);
+  };
+
+  const onBuyClose = () => {
+    setBuyOpen(false);
+    setPresentOpen(false);
   };
 
   return (
     <>
       <Header />
       <Wrapper>
-        <ItemTop name={emoticon_name} onLoginOpen={onLoginOpen} />
+        <ItemTop
+          name={emoticon_name}
+          onBuyOpen={onBuyOpen}
+          onPresentOpen={onPresentOpen}
+        />
         <ItemBody />
         <ItemBottom />
       </Wrapper>
-      {loginOpen && (
+      {/* TODO : 로그인 중인지 여부를 파악하여 로그인 창, 구매 창 중 하나를 열어야 한다. */}
+      {false && loginOpen && (
         <FullScreen>
-          <LoginModalBlock>
-            <div className="closeAndText">
-              <div className="closeBlock" onClick={onClickClose}>
-                <AiOutlineClose className="closeIcon"></AiOutlineClose>
-              </div>
-              <div className="loginText">로그인 후 이용해주세요.</div>
-            </div>
-            <div className="buttonBox">
-              <button className="closeBtn" onClick={onClickClose}>
-                취소
-              </button>
-              <button className="loginBtn">로그인</button>
-            </div>
-          </LoginModalBlock>
+          <LoginModal onClickClose={onClickClose} />
+        </FullScreen>
+      )}
+      {buyOpen && (
+        <FullScreen>
+          <BuyModal onBuyClose={onBuyClose} />
+        </FullScreen>
+      )}
+      {presentOpen && (
+        <FullScreen>
+          <BuyModal onBuyClose={onBuyClose} isPresent={true} />
         </FullScreen>
       )}
     </>
