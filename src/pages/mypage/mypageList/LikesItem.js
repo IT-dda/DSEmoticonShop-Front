@@ -93,13 +93,13 @@ const LikesItem = () => {
             {isImgHover ? (
               <img
                 className="img_emot"
-                src="/image/emoticon2.png"
+                src="/image/my_emot2.png"
                 alt="좋아요 아이템"
               />
             ) : (
               <img
                 className="img_emot"
-                src="/image/emoticon.png"
+                src="/image/my_emot1.png"
                 alt="좋아요 아이템"
               />
             )}

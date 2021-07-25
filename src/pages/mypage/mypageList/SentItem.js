@@ -1,39 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PurchasesItemBlock = styled.div`
+const SentItemBlock = styled.div`
   /* TODO: border 삭제 */
   /* border: 1px solid blue; */
 
-  width: 50%;
+  width: 30rem;
   height: 240px;
   padding: 20px 0px;
 
   .date_item {
     font-size: 15px;
     line-height: 3rem;
+    float: left;
   }
 
-  .area_itemlist {
-    display: flex;
+  .txt_account {
+    font-size: 15px;
+    line-height: 3rem;
+    margin-right: 1.5rem;
+    float: right;
+  }
 
-    .item_list {
-      display: grid;
-      grid-template-columns: 30% 70%;
-      grid-template-rows: 20px 20px;
-      width: 50%;
-      font-size: 13px;
-
-      .item_tit {
-        color: #7f7f7f;
-      }
-      .item_val {
-        color: #3b3b3b;
-      }
-      .item_price {
-        color: #fa4637;
-      }
-    }
+  .account_id {
+    font-weight: bold;
   }
 
   .area_item {
@@ -86,24 +76,14 @@ const PurchasesItemBlock = styled.div`
   }
 `;
 
-const PurchasesItem = () => {
+const SentItem = () => {
   return (
-    <PurchasesItemBlock>
+    <SentItemBlock>
+      {/* TODO: 받은 선물이 없는 경우, 안내문 보이기 */}
       <span className="date_item">2019.02.09</span>
-      <div className="area_itemlist">
-        <div className="item_list">
-          <span className="item_tit">결제번호</span>
-          <span className="item_val">1805907495</span>
-          <span className="item_tit">결제금액</span>
-          <span className="item_price">2200원</span>
-        </div>
-        <div className="item_list">
-          <span className="item_tit">결제수단</span>
-          <span className="item_val">카카오페이머니</span>
-          <span className="item_tit">상태</span>
-          <span className="item_val">결제완료</span>
-        </div>
-      </div>
+      <span className="txt_account">
+        To. <span className="account_id">김카톡</span>
+      </span>
 
       <div className="area_item">
         {/* TODO: Link 태그로 item 연결 */}
@@ -119,8 +99,8 @@ const PurchasesItem = () => {
           />
         </div>
       </div>
-    </PurchasesItemBlock>
+    </SentItemBlock>
   );
 };
 
-export default PurchasesItem;
+export default SentItem;

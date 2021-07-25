@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const BannerMyBlock = styled.div`
   width: 100%;
@@ -25,6 +25,7 @@ const BannerMyBlock = styled.div`
   .my_btns {
     ul {
       display: block;
+      padding: 0;
       li {
         display: inline-block;
         margin-right: 8px;
@@ -51,14 +52,6 @@ const ButtonMy = styled(Link)`
     color: #4774c1;
     font-weight: bold;
   }
-
-  /* ${(props) =>
-    props.current &&
-    css`
-      background: #ffffff;
-      color: #4774c1;
-      font-weight: bold;
-    `}; */
 `;
 
 const BannerMy = ({ location: pathname }) => {
@@ -71,8 +64,8 @@ const BannerMy = ({ location: pathname }) => {
             <Item current={pathname === '/mypage/purchases'}>
               <ButtonMy to="/mypage/purchases">구매내역</ButtonMy>
             </Item>
-            <Item current={pathname === '/mypage/presents'}>
-              <ButtonMy to="/mypage/presents">선물함</ButtonMy>
+            <Item current={pathname === '/mypage/presents/received'}>
+              <ButtonMy to="/mypage/presents/received">선물함</ButtonMy>
             </Item>
             <Item current={pathname === '/mypage/coupons'}>
               <ButtonMy to="/mypage/coupons">쿠폰함</ButtonMy>

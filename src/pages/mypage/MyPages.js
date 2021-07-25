@@ -2,11 +2,13 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import BannerMy from '../../components/common/BannerMy';
+import Header from '../../components/common/Header';
 import MyPage from './MyPage';
 
 const MyPages = () => {
   return (
     <>
+      <Header />
       <BannerMy />
 
       <Route
