@@ -31,7 +31,7 @@ const TitleLink = styled(Link)`
 const StyleBox = ({ name, id }) => {
   return (
     <StyleItemWrapper>
-      <TitleLink to={`/style/categories/${id}`}>
+      <TitleLink to={`/style/categories?id=${id}&group=0`}>
         #{name} <span>{'>'}</span>
       </TitleLink>
       <div className="styleItems">

@@ -39,7 +39,7 @@ const App = () => {
       <Route component={LoginPage} path="/login" />
       <Route component={SearchPage} path="/search" />
       <Route component={ItemPage} path="/t/:emoticon_name" />
-      <Route component={StyleGroupPage} path="/style/categories/:id" />
+      <Route component={StyleGroupPage} path="/style/categories" />
     </>
   );
 };

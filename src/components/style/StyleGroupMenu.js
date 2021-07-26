@@ -25,27 +25,13 @@ const StyleMenuBlock = styled.div`
   }
 
   .groupBox {
-    button {
-      border: 0.5px solid #ebebeb;
-      background: white;
-      color: black;
-      padding: 7px 17px;
-      border-radius: 15px;
-      font-size: 13px;
-      cursor: pointer;
-
-      &:hover {
-        color: white;
-        ${(props) => {
-          return css`
-            background-color: ${palette.categoryHover[props.id]};
-          `;
-        }};
-      }
-    }
-
-    button + button {
-      margin-left: 10px;
+    .select {
+      color: white;
+      ${(props) => {
+        return css`
+          background-color: ${palette.categoryHover[props.id]};
+        `;
+      }};
     }
   }
 `;
@@ -72,7 +58,7 @@ const linkStyle = css`
     font-weight: bold;
     ${(props) => {
       return css`
-        color: ${palette.categoryHover[props.hoverId]};
+        color: ${palette.categoryHover[props.hoverid]};
       `;
     }};
   }
@@ -83,30 +69,71 @@ const StyledLink = styled(Link)`
   text-decoration:none;
 `;
 
-const StyleGroupMenu = ({ id }) => {
+const StyledButton = styled(Link)`
+  border: 0.5px solid #ebebeb;
+  background: white;
+  color: black;
+  padding: 7px 17px;
+  border-radius: 15px;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    ${(props) => {
+      return css`
+        background-color: ${palette.categoryHover[props.id]};
+      `;
+    }};
+  }
+
+  & + & {
+    margin-left: 10px;
+  }
+`;
+
+const StyleGroupMenu = ({ id, group }) => {
   return (
     <StyleMenuWrapper id={id}>
       <StyleMenuBlock id={id}>
         <div className="categoryBox">
-          <StyledLink to="/style/categories/1" id={id} hoverId={1}>
-            <span className={id === '1' ? 'select' : ''}>
+          <StyledLink to="/style/categories?id=1&group=0" id={id} hoverid={1}>
+            <span className={id === 1 ? 'select' : ''}>
               인기 이모티콘 시리즈
             </span>
           </StyledLink>
-          <StyledLink to="/style/categories/2" id={id} hoverId={2}>
-            <span className={id === '2' ? 'select' : ''}>재밌는</span>
+          <StyledLink to="/style/categories?id=2&group=0" id={id} hoverid={2}>
+            <span className={id === 2 ? 'select' : ''}>재밌는</span>
           </StyledLink>
-          <StyledLink to="/style/categories/3" id={id} hoverId={3}>
-            <span className={id === '3' ? 'select' : ''}>귀여운</span>
+          <StyledLink to="/style/categories?id=3&group=0" id={id} hoverid={3}>
+            <span className={id === 3 ? 'select' : ''}>귀여운</span>
           </StyledLink>
-          <StyledLink to="/style/categories/4" id={id} hoverId={4}>
-            <span className={id === '4' ? 'select' : ''}>동물</span>
+          <StyledLink to="/style/categories?id=4&group=0" id={id} hoverid={4}>
+            <span className={id === 4 ? 'select' : ''}>동물</span>
           </StyledLink>
         </div>
         <div className="groupBox">
-          <button>전체</button>
-          <button>#다른_그룹</button>
-          <button>#또_다른_그룹</button>
+          <StyledButton
+            className={group === 0 ? 'select' : ''}
+            id={id}
+            to={`/style/categories?id=${id}&group=0`}
+          >
+            전체
+          </StyledButton>
+          <StyledButton
+            className={group === 1 ? 'select' : ''}
+            id={id}
+            to={`/style/categories?id=${id}&group=1`}
+          >
+            #다른_그룹
+          </StyledButton>
+          <StyledButton
+            className={group === 2 ? 'select' : ''}
+            id={id}
+            to={`/style/categories?id=${id}&group=2`}
+          >
+            #또_다른_그룹
+          </StyledButton>
         </div>
       </StyleMenuBlock>
     </StyleMenuWrapper>
