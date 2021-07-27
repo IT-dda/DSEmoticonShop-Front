@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AiOutlineDown } from 'react-icons/ai';
 
 const ItemBodyWrapper = styled.div`
   width: 100%;
@@ -75,10 +76,15 @@ const ItemBodyBlock = styled.ul`
       display: flex;
       height: 50px;
       justify-content: space-between;
+      align-items: center;
 
       span {
         display: flex;
         align-items: center;
+      }
+
+      .downIcon{
+        color: #7e7e7e;
       }
     }
 
@@ -138,11 +144,11 @@ const ItemBody = () => {
         <div className="guideBox">
           <div className="guide">
             <span>상품안내</span>
-            <span>∨</span>
+            <AiOutlineDown className="downIcon"></AiOutlineDown>
           </div>
           <div className="guide">
             <span>해지 및 환불 안내</span>
-            <span>∨</span>
+            <AiOutlineDown className="downIcon"></AiOutlineDown>
           </div>
         </div>
       </ItemBodyBlock>

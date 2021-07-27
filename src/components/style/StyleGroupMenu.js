@@ -125,14 +125,28 @@ const StyleGroupMenu = ({ id, group }) => {
             id={id}
             to={`/style/categories?id=${id}&group=1`}
           >
-            #다른_그룹
+            #첫번째_그룹
           </StyledButton>
           <StyledButton
             className={group === 2 ? 'select' : ''}
             id={id}
             to={`/style/categories?id=${id}&group=2`}
           >
-            #또_다른_그룹
+            #두번째_그룹
+          </StyledButton>
+          <StyledButton
+            className={group === 3 ? 'select' : ''}
+            id={id}
+            to={`/style/categories?id=${id}&group=3`}
+          >
+            #세번째_그룹
+          </StyledButton>
+          <StyledButton
+            className={group === 4 ? 'select' : ''}
+            id={id}
+            to={`/style/categories?id=${id}&group=4`}
+          >
+            #네번째_그룹
           </StyledButton>
         </div>
       </StyleMenuBlock>
