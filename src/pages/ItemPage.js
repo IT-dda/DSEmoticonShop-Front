@@ -6,6 +6,7 @@ import ItemBottom from '../components/item/ItemBottom';
 import Header from '../components/common/Header';
 import BuyModal from '../components/item/BuyModal';
 import LoginModal from '../components/item/LoginModal';
+import ReceiptModal from '../components/item/ReceiptModal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,6 +32,8 @@ const ItemPage = ({ match }) => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [buyOpen, setBuyOpen] = useState(false);
   const [presentOpen, setPresentOpen] = useState(false);
+  const [receiptOpen, setReceiptOpen] = useState(false);
+  const [presentReceipt, setPresentReceipt] = useState(false);
 
   const onClickClose = () => {
     setLoginOpen(false);
@@ -49,6 +52,21 @@ const ItemPage = ({ match }) => {
   const onBuyClose = () => {
     setBuyOpen(false);
     setPresentOpen(false);
+  };
+
+  const onCompleteBuy = (type) => {
+    if (type === '선물') {
+      setPresentOpen(false);
+      setPresentReceipt(true);
+    } else {
+      setBuyOpen(false);
+      setReceiptOpen(true);
+    }
+  };
+
+  const onReceiptClose = () => {
+    setReceiptOpen(false);
+    setPresentReceipt(false);
   };
 
   return (
@@ -71,12 +89,31 @@ const ItemPage = ({ match }) => {
       )}
       {buyOpen && (
         <FullScreen>
-          <BuyModal onBuyClose={onBuyClose} />
+          <BuyModal
+            onBuyClose={onBuyClose}
+            price={2500}
+            onCompleteBuy={onCompleteBuy}
+          />
         </FullScreen>
       )}
       {presentOpen && (
         <FullScreen>
-          <BuyModal onBuyClose={onBuyClose} isPresent={true} />
+          <BuyModal
+            onBuyClose={onBuyClose}
+            isPresent={true}
+            price={2500}
+            onCompleteBuy={onCompleteBuy}
+          />
+        </FullScreen>
+      )}
+      {receiptOpen && (
+        <FullScreen>
+          <ReceiptModal onReceiptClose={onReceiptClose} />
+        </FullScreen>
+      )}
+      {presentReceipt && (
+        <FullScreen>
+          <ReceiptModal onReceiptClose={onReceiptClose} isPresent={true} />
         </FullScreen>
       )}
     </>
