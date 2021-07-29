@@ -4,6 +4,7 @@ import Contents from '../components/common/Contents';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
+import NoticeItem from '../components/common/NoticeItem';
 
 const NoticePageBlock = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ const NoticePage = () => {
       <Header />
       <NoticePageBlock>
         <Contents title="새소식" />
+        <NoticeItem notice_tit="[EVENT] 이모티콘샵은 언제나 전상품 20% 할인 중!" />
       </NoticePageBlock>
       <NoticeFooter />
     </>

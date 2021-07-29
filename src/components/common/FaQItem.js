@@ -6,10 +6,10 @@ const FaQItemBlock = styled.div`
   background: #fff;
   border-radius: 6px;
   display: block;
-  margin-bottom: 10px;
   align-self: flex-start;
   padding: 20px 25px;
   align-items: center;
+  margin: 0 25% 10px;
 
   &:hover {
     .tit {
