@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/common/Header';
 import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-
-const Fullscreen = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-`;
+import SearchItemList from '../components/search/SearchItemList';
+import qs from 'qs';
 
 const SearchModalBlock = styled.div`
+  position: fixed;
   width: 100%;
   height: 130px;
   background: #f8f8f8;
@@ -28,6 +25,10 @@ const SearchModalBlock = styled.div`
   }
 `;
 
+const Spacer = styled.div`
+  height: 130px;
+`;
+
 const SearchLink = styled(Link)`
   width: 30px;
   height: 30px;
@@ -39,27 +40,41 @@ const SearchLink = styled(Link)`
   }
 `;
 
-const ExampleBlock = styled.div`
+const SearchItemBlock = styled.div`
   width: 100%;
-  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const SearchPage = () => {
+const SearchPage = ({ location }) => {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const [search, setSearch] = useState(query.q); // search 창에 입력한 단어
+
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <>
       <Header hideSearch={true}></Header>
-      <Fullscreen>
-        <SearchModalBlock>
-          <input type="text" placeholder="이모티콘을 검색해보세요!" />
-          <SearchLink to="/search">
-            <AiOutlineSearch className="searchImg"></AiOutlineSearch>
-          </SearchLink>
-        </SearchModalBlock>
-      </Fullscreen>
-      <ExampleBlock>검색 결과 창</ExampleBlock>
+      <SearchModalBlock>
+        <input
+          type="text"
+          placeholder="이모티콘을 검색해보세요!"
+          onChange={onChange}
+          value={search}
+        />
+        <SearchLink to={`/search?q=${search}`}>
+          <AiOutlineSearch className="searchImg"></AiOutlineSearch>
+        </SearchLink>
+      </SearchModalBlock>
+      <Spacer></Spacer>
+      <SearchItemBlock>
+        <SearchItemList></SearchItemList>
+      </SearchItemBlock>
     </>
   );
 };

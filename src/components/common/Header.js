@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -146,10 +146,10 @@ const DrawerMenuSpace = styled.div`
 `;
 
 const Header = ({ menu, hideSearch }) => {
-  const searchInput = useRef();
   const [open, setOpen] = useState(false); // search
   const [hideIcon, setHideIcon] = useState(hideSearch);
   const [openMenu, setOpenMenu] = useState(false); // drawer menu
+  const [search, setSearch] = useState(''); // search 창에 입력한 단어
 
   // search
   const onSearch = () => {
@@ -169,6 +169,11 @@ const Header = ({ menu, hideSearch }) => {
 
   const onClickOutsideMenu = () => {
     setOpenMenu(false);
+  };
+
+  // search 창 단어 변경 시
+  const onChange = (e) => {
+    setSearch(e.target.value);
   };
 
   return (
@@ -222,9 +227,14 @@ const Header = ({ menu, hideSearch }) => {
       <Spacer />
       {open && (
         <Fullscreen>
-          <SearchModalBlock ref={searchInput}>
-            <input type="text" placeholder="이모티콘을 검색해보세요!" />
-            <SearchLink to="/search">
+          <SearchModalBlock>
+            <input
+              type="text"
+              placeholder="이모티콘을 검색해보세요!"
+              onChange={onChange}
+              value={search}
+            />
+            <SearchLink to={`/search?q=${search}`}>
               <AiOutlineSearch className="searchImg"></AiOutlineSearch>
             </SearchLink>
           </SearchModalBlock>
