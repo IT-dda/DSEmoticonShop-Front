@@ -60,7 +60,7 @@ const ReceiptModalBlock = styled.div`
   }
 `;
 
-const ReceiptModal = ({ onReceiptClose, isPresent }) => {
+const ReceiptModal = ({ onReceiptClose, isPresent, pay }) => {
   const presentCode = useRef();
   const onCopy = () => {
     const el = presentCode.current;
@@ -84,6 +84,16 @@ const ReceiptModal = ({ onReceiptClose, isPresent }) => {
         </span>
         <span className="price">
           <b>결제금액</b> 2000원 {/* TODO : 아직 데이터 못 넘겨받았음 */}
+        </span>
+        <span className="pay">
+          <b>결제수단</b>{' '}
+          {pay === 'kakaomoney'
+            ? '카카오페이 머니'
+            : pay === 'kakaocard'
+            ? '카카오페이 카드'
+            : pay === 'credit'
+            ? '일반 신용카드'
+            : '일반 휴대폰'}
         </span>
       </div>
       {isPresent ? (
