@@ -9,6 +9,7 @@ const NoticeItemBlock = styled.div`
   align-self: flex-start;
   padding: 20px 25px;
   align-items: center;
+  margin: 0 25%;
 
   .ico_notice {
     margin: 11px 10px 0 0;

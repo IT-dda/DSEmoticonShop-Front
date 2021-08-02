@@ -6,6 +6,7 @@ import Banner from '../components/common/Banner';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import StyleBox from '../components/home/StyleBox';
+import Footer from '../components/common/Footer';
 // import DrawerMenu from '../components/mypage/DrawerMenu';
 
 const Wrapper = styled.div`
@@ -13,6 +14,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* viewport_height - Hader_height - Banner_height */
+  min-height: calc(100vh - 110px - 170px);
 `;
 
 const HomePage = () => {
@@ -27,6 +31,7 @@ const HomePage = () => {
         <HotBox></HotBox>
         <StyleBox></StyleBox>
       </Wrapper>
+      <Footer />
     </>
   );
 };
