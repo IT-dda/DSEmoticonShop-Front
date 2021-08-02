@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
+import { Link } from 'react-router-dom';
 
-const StyleItemBlock = styled.div`
+const StyleItemBlock = styled(Link)`
   display: flex;
   flex-direction: column;
   width: 210px;
@@ -57,9 +58,9 @@ const StyleItemBlock = styled.div`
   }
 `;
 
-const StyleItem = ({ title, id }) => {
+const StyleItem = ({ title, id, group }) => {
   return (
-    <StyleItemBlock id={id}>
+    <StyleItemBlock id={id} to={`/style/categories?id=${id}&group=${group}`}>
       <div className="title">
         <span>{title}</span>
       </div>

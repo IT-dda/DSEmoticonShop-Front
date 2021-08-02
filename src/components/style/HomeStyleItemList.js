@@ -16,9 +16,9 @@ const StyleItemListBlock = styled.ul`
 const HomeStyleItemList = () => {
   return (
     <StyleItemListBlock>
-      <HomeStyleItem category="#재밌는" group="#그룹1"></HomeStyleItem>
-      <HomeStyleItem category="#귀여운" group="#그룹1"></HomeStyleItem>
-      <HomeStyleItem category="#일러스트" group="#그룹1"></HomeStyleItem>
+      <HomeStyleItem category="#재밌는" group="#첫번째_그룹" categoryId={2} groupId={1}></HomeStyleItem>
+      <HomeStyleItem category="#귀여운" group="#첫번째_그룹" categoryId={3} groupId={1}></HomeStyleItem>
+      <HomeStyleItem category="#동물" group="#첫번째_그룹" categoryId={4} groupId={1}></HomeStyleItem>
     </StyleItemListBlock>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ItemBottomWrapper = styled.div`
   width: 900px;
@@ -22,22 +23,22 @@ const ItemImageBlock = styled.ul`
   justify-content: space-between;
   padding: 0;
   margin: 0;
+`;
 
-  li {
-    cursor: pointer;
-    list-style: none;
-    width: 165px;
-    height: 165px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0px 0px 7px #e6e6e6;
+const ItemLink = styled(Link)`
+  cursor: pointer;
+  list-style: none;
+  width: 165px;
+  height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px #e6e6e6;
 
-    img {
-      width: 130px;
-      height: 130px;
-    }
+  img {
+    width: 130px;
+    height: 130px;
   }
 `;
 
@@ -46,21 +47,21 @@ const ItemBottom = () => {
     <ItemBottomWrapper>
       <div className="title">관련 이모티콘</div>
       <ItemImageBlock>
-        <li>
+        <ItemLink to="/t/emoticon_name">
           <img src="/image/emoticon1.png" alt="emoticon" />
-        </li>
-        <li>
+        </ItemLink>
+        <ItemLink to="/t/emoticon_name">
           <img src="/image/emoticon2.png" alt="emoticon" />
-        </li>
-        <li>
+        </ItemLink>
+        <ItemLink to="/t/emoticon_name">
           <img src="/image/emoticon3.png" alt="emoticon" />
-        </li>
-        <li>
+        </ItemLink>
+        <ItemLink to="/t/emoticon_name">
           <img src="/image/emoticon4.png" alt="emoticon" />
-        </li>
-        <li>
+        </ItemLink>
+        <ItemLink to="/t/emoticon_name">
           <img src="/image/emoticon5.png" alt="emoticon" />
-        </li>
+        </ItemLink>
       </ItemImageBlock>
     </ItemBottomWrapper>
   );

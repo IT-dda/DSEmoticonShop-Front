@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
-const StyleItemBlock = styled.div`
+const StyleItemBlock = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +29,7 @@ const StyleItemBlock = styled.div`
     height: 45px;
     justify-content: space-between;
 
-    .likeImg {
+    .like {
       display: none;
     }
 
@@ -51,10 +53,14 @@ const StyleItemBlock = styled.div`
         display: inline;
       }
     }
-    .likeImg {
+    .like {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      cursor: pointer;
+      border: 1px solid #ebebeb;
+      border-radius: 20px;
     }
 
     .titleBox {
@@ -78,7 +84,7 @@ const ItemTitleBlock = styled.div`
 
 const StyleGroupItem = ({ title }) => {
   return (
-    <StyleItemBlock>
+    <StyleItemBlock to="/t/emoticon_name">
       <div className="thumbnail">
         <img src="/image/emoticon1.png" alt="emoticon1" />
         <img src="/image/emoticon2.png" alt="emoticon1" />
@@ -97,7 +103,7 @@ const StyleGroupItem = ({ title }) => {
           </ItemTitleBlock>
           <span className="author">작가 이름</span>
         </div>
-        <img className="likeImg" src="/image/like1.png" alt="like" />
+        <AiOutlineHeart className="like"></AiOutlineHeart>
       </div>
     </StyleItemBlock>
   );

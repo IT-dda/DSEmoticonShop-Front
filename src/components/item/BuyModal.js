@@ -4,6 +4,7 @@ import {
   AiOutlineClose,
   AiFillCheckCircle,
   AiOutlineCheckCircle,
+  AiOutlineDown,
 } from 'react-icons/ai';
 
 const BuyModalBlock = styled.div`
@@ -78,9 +79,14 @@ const BuyModalBlock = styled.div`
       height: 42px;
       cursor: pointer;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding-left: 8px;
+      padding: 0 8px;
       font-size: 14px;
+
+      .downIcon {
+        color: #7e7e7e;
+      }
     }
   }
 
@@ -168,15 +174,40 @@ const BuyModalBlock = styled.div`
   }
 `;
 
-const BuyModal = ({ onBuyClose, isPresent }) => {
+const BuyModal = ({ onBuyClose, isPresent, price, onCompleteBuy }) => {
   const [list, setList] = useState(false);
   const [agree, setAgree] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState('쿠폰 선택 안함');
+  const [salePrice, setSalePrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(price);
 
   const onlistClick = () => {
     if (list) {
       setList(false);
     } else {
       setList(true);
+    }
+  };
+
+  {
+    /* TODO : 가격을 천 단위로 표시하도록 수정해야 함. */
+  }
+
+  const onCouponClick = (coupon) => {
+    if (list) {
+      setList(false);
+    } else {
+      setList(true);
+    }
+
+    setSelectedCoupon(coupon);
+
+    if (coupon === '쿠폰 선택 안함') {
+      setSalePrice(() => 0);
+      setTotalPrice(() => price - 0);
+    } else {
+      setSalePrice(() => 500);
+      setTotalPrice(() => price - 500);
     }
   };
 
@@ -201,7 +232,7 @@ const BuyModal = ({ onBuyClose, isPresent }) => {
         <div className="infoBox">
           <span className="title">이모티콘 제목</span>
           <span className="author">작가</span>
-          <span className="price">2,500 원</span>
+          <span className="price">{price} 원</span>
         </div>
         <img src="/image/emoticon1.png" alt="emoticon1" />
       </div>
@@ -211,14 +242,25 @@ const BuyModal = ({ onBuyClose, isPresent }) => {
           <div className="subTitle">할인쿠폰</div>
           <div className="couponBox">
             <div className="selectCoupon" onClick={onlistClick}>
-              선택된 쿠폰 : 임시
+              <span>{selectedCoupon}</span>
+              <AiOutlineDown className="downIcon"></AiOutlineDown>
             </div>
             {list && (
               <div className="listBox">
-                <div className="couponList" onClick={onlistClick}>
+                <div
+                  className="couponList"
+                  onClick={() => {
+                    onCouponClick('쿠폰 선택 안함');
+                  }}
+                >
                   쿠폰 선택 안함
                 </div>
-                <div className="couponList" onClick={onlistClick}>
+                <div
+                  className="couponList"
+                  onClick={() => {
+                    onCouponClick('7월, 전상품 20% 할인 (20%)');
+                  }}
+                >
                   7월, 전상품 20% 할인 (20%)
                 </div>
               </div>
@@ -227,15 +269,15 @@ const BuyModal = ({ onBuyClose, isPresent }) => {
           <div className="subTitle payPrice">결제금액</div>
           <div className="subPaymentBox">
             <span className="payTitle">판매금액</span>
-            <span>2,500원</span>
+            <span>{price}원</span>
           </div>
           <div className="subPaymentBox">
             <span className="payTitle">할인금액</span>
-            <span>- 500원</span>
+            <span>- {salePrice}원</span>
           </div>
           <div className="finalPrice">
             <span className="payTitle">최종 결제금액</span>
-            <span>2,000원</span>
+            <span>{totalPrice}원</span>
           </div>
         </div>
       </div>
@@ -257,9 +299,16 @@ const BuyModal = ({ onBuyClose, isPresent }) => {
           - 주문취소 및 환불 시 이미 사용한 쿠폰은 재발급되지 않습니다.
         </li>
       </ul>
-      <button className={agree ? 'agreeBtn' : ''}>
-        {isPresent ? '선물하기' : '구매하기'}
-      </button>
+      {agree ? (
+        <button
+          className="agreeBtn"
+          onClick={() => onCompleteBuy(isPresent ? '선물' : '구매')}
+        >
+          {isPresent ? '선물하기' : '구매하기'}
+        </button>
+      ) : (
+        <button>{isPresent ? '선물하기' : '구매하기'}</button>
+      )}
     </BuyModalBlock>
   );
 };

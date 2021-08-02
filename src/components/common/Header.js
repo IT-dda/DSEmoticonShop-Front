@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { AiOutlineMenu } from 'react-icons/ai';
 import DrawerMenu from '../mypage/DrawerMenu';
+import ProfileModal from './ProfileModal';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -54,6 +55,19 @@ const HeaderTop = styled.div`
 `;
 
 const LoginLink = styled(Link)`
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+  }
+`;
+
+const ProfileBox = styled.div`
   width: 25px;
   height: 25px;
   margin-left: 20px;
@@ -146,10 +160,12 @@ const DrawerMenuSpace = styled.div`
 `;
 
 const Header = ({ menu, hideSearch }) => {
-  const searchInput = useRef();
   const [open, setOpen] = useState(false); // search
   const [hideIcon, setHideIcon] = useState(hideSearch);
   const [openMenu, setOpenMenu] = useState(false); // drawer menu
+  const [search, setSearch] = useState(''); // search 창에 입력한 단어
+  const [login, setLogin] = useState(true); // 임시 : 로그인 여부
+  const [profile, setProfile] = useState(false); // profile modal
 
   // search
   const onSearch = () => {
@@ -171,6 +187,18 @@ const Header = ({ menu, hideSearch }) => {
     setOpenMenu(false);
   };
 
+  // search 창 단어 변경 시
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  // 프로필 창
+  const onProfileOpen = () => {
+    setProfile(true);
+  };
+  const onProfileClose = () => {
+    setProfile(false);
+  };
   return (
     <>
       <HeaderBlock>
@@ -190,9 +218,15 @@ const Header = ({ menu, hideSearch }) => {
                 ></AiOutlineSearch>
               )}
             </div>
-            <LoginLink to="/login">
-              <img alt="프로필 기본이미지" src="/image/profile_default.png" />
-            </LoginLink>
+            {login ? (
+              <ProfileBox onClick={onProfileOpen}>
+                <img alt="프로필 사진" src="/image/profile_default.png" />
+              </ProfileBox>
+            ) : (
+              <LoginLink to="/login">
+                <img alt="프로필 기본이미지" src="/image/profile_default.png" />
+              </LoginLink>
+            )}
           </div>
         </HeaderTop>
         <HeaderMenu>
@@ -212,6 +246,7 @@ const Header = ({ menu, hideSearch }) => {
             스타일
           </StyledLink>
         </HeaderMenu>
+        {profile && <ProfileModal onProfileClose={onProfileClose} />}
       </HeaderBlock>
       {openMenu && (
         <Fullscreen>
@@ -222,9 +257,14 @@ const Header = ({ menu, hideSearch }) => {
       <Spacer />
       {open && (
         <Fullscreen>
-          <SearchModalBlock ref={searchInput}>
-            <input type="text" placeholder="이모티콘을 검색해보세요!" />
-            <SearchLink to="/search">
+          <SearchModalBlock>
+            <input
+              type="text"
+              placeholder="이모티콘을 검색해보세요!"
+              onChange={onChange}
+              value={search}
+            />
+            <SearchLink to={`/search?q=${search}`}>
               <AiOutlineSearch className="searchImg"></AiOutlineSearch>
             </SearchLink>
           </SearchModalBlock>
