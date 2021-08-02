@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { Link, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
 const BannerMyBlock = styled.div`
   width: 100%;
@@ -25,6 +25,7 @@ const BannerMyBlock = styled.div`
   .my_btns {
     ul {
       display: block;
+      padding: 0;
       li {
         display: inline-block;
         margin-right: 8px;
@@ -33,12 +34,12 @@ const BannerMyBlock = styled.div`
   }
 `;
 
-const Item = styled.li``;
+const Item = styled.li`
+  background: ${(props) => (props.current ? '#ffffff' : 'rgba(0, 0, 0, 0.1)')};
+  color: ${(props) => (props.current ? '#4774c1' : '#ffffff')};
+  font-weight: ${(props) => (props.current ? 'bold' : 'none')};
 
-const ButtonMy = styled(Link)`
-  background: rgba(0, 0, 0, 0.1);
   border: none;
-
   display: inline-block;
   height: 36px;
   padding: 0 18px;
@@ -51,17 +52,9 @@ const ButtonMy = styled(Link)`
     color: #4774c1;
     font-weight: bold;
   }
-
-  /* ${(props) =>
-    props.current &&
-    css`
-      background: #ffffff;
-      color: #4774c1;
-      font-weight: bold;
-    `}; */
 `;
 
-const BannerMy = ({ location: pathname }) => {
+const BannerMy = ({ location: { pathname } }) => {
   return (
     <BannerMyBlock>
       <div className="my_header">
@@ -69,16 +62,26 @@ const BannerMy = ({ location: pathname }) => {
         <div className="my_btns">
           <ul>
             <Item current={pathname === '/mypage/purchases'}>
-              <ButtonMy to="/mypage/purchases">구매내역</ButtonMy>
+              <Link to="/mypage/purchases">구매내역</Link>
             </Item>
-            <Item current={pathname === '/mypage/presents'}>
-              <ButtonMy to="/mypage/presents">선물함</ButtonMy>
+            <Item
+              current={
+                pathname === '/mypage/presents/received' ||
+                pathname === '/mypage/presents/sent'
+              }
+            >
+              <Link to="/mypage/presents/received">선물함</Link>
             </Item>
-            <Item current={pathname === '/mypage/coupons'}>
-              <ButtonMy to="/mypage/coupons">쿠폰함</ButtonMy>
+            <Item
+              current={
+                pathname === '/mypage/coupons' ||
+                pathname === '/mypage/coupons/used'
+              }
+            >
+              <Link to="/mypage/coupons">쿠폰함</Link>
             </Item>
             <Item current={pathname === '/mypage/likes'}>
-              <ButtonMy to="/mypage/likes">좋아요</ButtonMy>
+              <Link to="/mypage/likes">좋아요</Link>
             </Item>
           </ul>
         </div>
@@ -87,4 +90,4 @@ const BannerMy = ({ location: pathname }) => {
   );
 };
 
-export default BannerMy;
+export default withRouter(BannerMy);
