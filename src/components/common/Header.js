@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { AiOutlineMenu } from 'react-icons/ai';
 import DrawerMenu from '../mypage/DrawerMenu';
+import ProfileModal from './ProfileModal';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -54,6 +55,19 @@ const HeaderTop = styled.div`
 `;
 
 const LoginLink = styled(Link)`
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+  }
+`;
+
+const ProfileBox = styled.div`
   width: 25px;
   height: 25px;
   margin-left: 20px;
@@ -150,6 +164,8 @@ const Header = ({ menu, hideSearch }) => {
   const [hideIcon, setHideIcon] = useState(hideSearch);
   const [openMenu, setOpenMenu] = useState(false); // drawer menu
   const [search, setSearch] = useState(''); // search 창에 입력한 단어
+  const [login, setLogin] = useState(true); // 임시 : 로그인 여부
+  const [profile, setProfile] = useState(false); // profile modal
 
   // search
   const onSearch = () => {
@@ -176,6 +192,13 @@ const Header = ({ menu, hideSearch }) => {
     setSearch(e.target.value);
   };
 
+  // 프로필 창
+  const onProfileOpen = () => {
+    setProfile(true);
+  };
+  const onProfileClose = () => {
+    setProfile(false);
+  };
   return (
     <>
       <HeaderBlock>
@@ -195,9 +218,15 @@ const Header = ({ menu, hideSearch }) => {
                 ></AiOutlineSearch>
               )}
             </div>
-            <LoginLink to="/login">
-              <img alt="프로필 기본이미지" src="/image/profile_default.png" />
-            </LoginLink>
+            {login ? (
+              <ProfileBox onClick={onProfileOpen}>
+                <img alt="프로필 사진" src="/image/profile_default.png" />
+              </ProfileBox>
+            ) : (
+              <LoginLink to="/login">
+                <img alt="프로필 기본이미지" src="/image/profile_default.png" />
+              </LoginLink>
+            )}
           </div>
         </HeaderTop>
         <HeaderMenu>
@@ -217,6 +246,7 @@ const Header = ({ menu, hideSearch }) => {
             스타일
           </StyledLink>
         </HeaderMenu>
+        {profile && <ProfileModal onProfileClose={onProfileClose} />}
       </HeaderBlock>
       {openMenu && (
         <Fullscreen>

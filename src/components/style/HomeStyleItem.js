@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import palette from '../../lib/styles/palette';
 
 const StyleItemWrapper = styled.li`
   display: flex;
@@ -12,7 +13,7 @@ const StyleItemWrapper = styled.li`
   margin-bottom: 30px;
 `;
 
-const StyleNameBlock = styled.div`
+const StyleNameBlock = styled(Link)`
   display: flex;
   flex-direction: column;
   width: 150px;
@@ -20,18 +21,26 @@ const StyleNameBlock = styled.div`
   .category {
     font-size: 20px;
     font-weight: bold;
-    color: #ff8f8f;
     margin-top: 5px;
     margin-bottom: 10px;
+    ${(props) => {
+      return css`
+        color: ${palette.categoryHover[props.id]};
+      `;
+    }};
   }
 
   .group {
     span {
-      background-color: #ff8f8f;
       color: white;
       font-size: 14px;
       border-radius: 15px;
-      padding: 5px 10px;
+      padding: 7px 12px;
+      ${(props) => {
+        return css`
+          background-color: ${palette.categoryHover[props.id]};
+        `;
+      }};
     }
   }
 `;
@@ -52,10 +61,13 @@ const StyleItemLink = styled(Link)`
   }
 `;
 
-const HomeStyleItem = ({ category, group }) => {
+const HomeStyleItem = ({ category, group, categoryId, groupId }) => {
   return (
     <StyleItemWrapper>
-      <StyleNameBlock>
+      <StyleNameBlock
+        to={`/style/categories?id=${categoryId}&group=${groupId}`}
+        id={categoryId}
+      >
         <span className="category">{category}</span>
         <span className="group">
           <span>{group}</span>
